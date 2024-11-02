@@ -20,5 +20,14 @@ pipeline {
               }
             }
         }     
+
+        stage('Docker build and push') {
+          docker.withRegistry("", docker-hub)
+          steps {
+            sh 'printenv'
+            sh 'docker build -t ykishore/numeric-app:${GIT_COMMIT}'
+            SH 'docker push ykishore/numeric-app:${GIT_COMMIT}'
+          }
+        }
     }
 }
