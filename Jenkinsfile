@@ -22,7 +22,7 @@ pipeline {
         }     
 
         stage('Docker build and push') {
-          docker.withRegistry("https://hub.docker.com/", "docker-hub")
+          withDockerRegistry([url: "https://hub.docker.com/", credentialsId: "docker-hub"])
           steps {
             sh 'printenv'
             sh 'docker build -t ykishore/numeric-app:${GIT_COMMIT}'
