@@ -26,7 +26,7 @@ pipeline {
           steps {
             sh 'printenv'
             sh 'docker build -t ykishore/numeric-app:${GIT_COMMIT}'
-            SH 'docker push ykishore/numeric-app:${GIT_COMMIT}'
+            sh 'docker push ykishore/numeric-app:${GIT_COMMIT}'
           }
         }
     }
